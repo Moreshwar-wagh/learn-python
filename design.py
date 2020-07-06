@@ -23,7 +23,7 @@ def drawSpecial(t, size, repeat):
 
 
 drawSpecial(Mohit, 100, 10)
-Bhavesh = turtle.Turtle
+Bhavesh = turtle.Turtle()
 Bhavesh.speed(0)
 Bhavesh.color('yellow')
 rotate = int(90)
