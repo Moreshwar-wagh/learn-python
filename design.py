@@ -82,7 +82,7 @@ def drawSpecial(t, size, repeat):
 drawSpecial(Kapil, 100, 10)
 Rohit = turtle.Turtle()
 Rohit.speed(0)
-Rohit.color('pink')
+Rohit.color('Red')
 rotate = int(90)
 
 
