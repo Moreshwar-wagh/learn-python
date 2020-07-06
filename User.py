@@ -24,7 +24,7 @@ class User:
     def greet_user(self):
         print(f"HELLO  Mr.{self.first_name}\n")
 
-new_user = User("Mohit", "Wagh","mohit@99",28_03_1996,132456789,"mohit@99gmail.com")
+new_user = User("Mohit","Wagh","mohit@99",28_03_1996,132456789,"mohit@99gmail.com")
 new_user.describe_user()
 new_user.greet_user()
 
