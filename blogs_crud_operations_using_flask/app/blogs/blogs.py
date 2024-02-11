@@ -22,11 +22,31 @@ class Blogs(object):
 
     def delete_blog(self, data):
         try:
+            print(data)
+            from bson import ObjectId
+
             ConnectDB().connect_db()[self.collection_name].delete_one(
-                {"_id": data.get("blog_id")}
+                {"_id": ObjectId(data.get("_id"))}
             )
 
             return {"status": "success", "message": "Blog deleted successfully"}
+        except Exception as e:
+            return {"status": "failure", "message": str(e)}
+
+    def update_blog(self, data):
+        try:
+            from bson import ObjectId
+
+            ConnectDB().connect_db()[self.collection_name].update_one(
+                {"_id": ObjectId(data.get("_id"))},
+                {
+                    "$set": {
+                        "title": data.get("title"),
+                        "description": data.get("description"),
+                    }
+                },
+            )
+            return {"status": "success", "message": "Blog updated successfully"}
         except Exception as e:
             return {"status": "failure", "message": str(e)}
 
@@ -44,16 +64,3 @@ class Blogs(object):
     #         return {"status": "success", "message": "Blog updated successfully"}
     #     except Exception as e:
     #         return {"status": "failure", "message": str(e)}
-
-    def update_blog(self, data):
-        try:
-            blog_dict = {
-                "title": data.get("title", ""),
-                "description": data.get("description", ""),
-            }
-            ConnectDB().connect_db()[self.collection_name].update_one(
-                {"_id": data.get("blog_id")}, {"$set": blog_dict}
-            )
-            return {"status": "success", "message": "Blog updated successfully"}
-        except Exception as e:
-            return {"status": "failure", "message": str(e)}
